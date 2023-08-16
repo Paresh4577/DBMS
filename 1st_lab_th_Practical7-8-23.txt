@@ -1,0 +1,33 @@
+--DataBase Name 'man134'
+--1st table name 'deposite'
+
+--1. Create Table 
+create table deposite
+(actno int,
+cname varchar(50),
+bname varchar(50),
+amount decimal(8,2),
+adate datetime);
+
+--1.1 View Table deposite
+select * from deposite;
+
+--1.2 Insert Record deposite :
+insert into deposite
+
+--2. create branch
+create table branch
+(bname varchar(50),
+city varchar(50));
+
+--2.1 View Table branch
+select * from branch;
+
+--3. create customers
+create table customers
+(cname varchar(50),
+city varchar(50));
+
+--3.1 View Table customers
+select * from customers;
+
