@@ -226,3 +226,13 @@ update DEPOSIT set amount=5500 where actno=102;
 update DEPOSIT set amount=3600 where actno=103;
 update DEPOSIT set amount=3000 where actno=105;
 update DEPOSIT set amount=5600 where actno=108;
+
+--Group by
+select count(amount),bname, cname from borrow
+where amount >=5000
+group by amount,bname,cname;
+--having amount>=5000
+
+
+--Like Operator
+select * from borrow where bname like ('%a%');
