@@ -257,3 +257,178 @@ group by amount,bname,cname;
 select * from borrow where bname like ('%a%');
 
 
+--5 Part A
+create table Student 
+(
+  Enrollment_no varchar(20),
+  Name varchar(20),
+  Cpi decimal(5,2),
+  Birthdate datetime
+)
+--que-1
+alter table Student add city varchar(20), backlog int
+
+--que-2
+alter table Student alter column name varchar(35)
+
+--que-3
+alter table Student alter column Cpi int
+
+--que-4
+  sp_rename 'Student.Enrollment_no','eno';
+
+--que-5
+alter table student
+drop column city
+
+--que-6
+ sp_rename 'Student','Student_Master'
+
+ --que-7
+alter table student_master
+drop table Student_Master
+
+
+
+--PART-B
+CREATE TABLE DEPOSIT
+(
+	ACTNO INT,
+	CNAME VARCHAR(50),
+	BNAME VARCHAR(50),
+	AMOUNT DECIMAL(8,2),
+	ADATE DATETIME
+);
+
+--que-1
+alter table deposit add city varchar(20), pincode int; 
+
+--que-2
+alter table deposit alter column cname varchar(35);
+
+--que-3
+alter table deposit alter column amount int;
+
+--que-4
+sp_rename 'deposit.actno','ano';
+
+--que-5
+alter table deposit drop column city;
+
+
+--PART-C
+--que-1
+alter table deposit drop column adate
+
+--que-2
+sp_rename 'deposit.cname','CustomerName'
+
+--que-3
+sp_rename 'deposit','DEPOSIT_DETAIL'
+
+
+
+--6 PART-A
+--que-1
+create table Student
+(
+  Stuid int,
+  Firstname varchar(25),
+  lastname varchar(25),
+  Website varchar(50),
+  City varchar(25)
+)
+
+select * from student
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1011,'Keyur','Patel','techonthenet.com','Rajkot');
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1022,'Hardik','Shah','digminecraft.com','Ahmedabad');
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1033,'Kajal','Trivedi','bigactivities.com','Baroda');
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1044,'Bhoomi','Gajera','checkyourmath.com','Ahmedabad');
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1055,'Harmit','Mitel',NULL,'Rajkot');
+
+INSERT INTO Student (Stuid,Firstname,Lastname,Website,City)
+VALUES (1066,'Ashok','Jani',NULL,'Baroda');
+
+--que-1
+select Firstname from student
+where Firstname like ('K%')
+
+--que-2
+select firstname from student
+where firstname like ('_____')
+
+--que-3
+select firstname,lastname,city from student
+where city like ('_____a')
+
+--que-4
+select * from student
+where lastname like ('%tel')
+
+--que-5
+select * from student
+where Firstname like ('ha%t')
+
+--que-6
+select * from student
+where Firstname like ('K_Y%')
+
+
+--PART-B
+--que-1
+select Firstname from student
+where Website IS NULL and firstname like ('_____')
+
+--que-2
+select * from student
+where lastname like ('%jer%')
+
+--que-3
+select * from student
+where city like ('r%') OR city like ('b%')
+
+--que-4
+select * from student
+where Website IS NOT NULL
+
+--que-5
+select * from student
+where firstname like '[A-H]%'
+
+--que-6
+select * from student
+where firstname like ('_[a,e,i,o,u]%')
+
+
+--PART-C
+--que-1
+select Firstname from student
+where Website IS NULL and firstname like ('_____%')
+
+--que-2
+select * from student
+where lastname like ('Pat%')
+
+--que-3
+select * from student
+where city NOT LIKE ('B%')
+
+--que-4
+select * from student
+where firstname like ('[A,H]%') 
+
+--que-5
+select * from student
+where firstname like ('H[a,e,i,o,u]%') 
+
+
