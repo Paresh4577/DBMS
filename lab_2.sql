@@ -431,4 +431,75 @@ where firstname like ('[A,H]%')
 select * from student
 where firstname like ('H[a,e,i,o,u]%') 
 
+	
+--12 PART-A
+create table Employee
+(
+eid int,
+ename varchar(40),
+department varchar(30),
+salary int,
+joiningdate datetime,
+city varchar(30)
+)
 
+insert into Employee values (101,'Rahul','Admin',56000,'1-jan-1990','Rajkot')
+insert into Employee values (102,'Hardik','IT',18000,'25-sep-1990','Ahmedabad')
+insert into Employee values (103,'Bhavin','HR',25000,'14-may-1991','Baroda')
+insert into Employee values (104,'Bhoomi','Admin',39000,'8-feb-1991','Rajkot')
+insert into Employee values (105,'Rohit','IT',17000,'23-jul-1990','Jamnagar')
+insert into Employee values (106,'Priya','IT',9000,'18-oct-1990','Ahmedabad')
+insert into Employee values (107,'Neha','HR',34000,'25-dec-1991','Rajkot')
+
+select * from employee
+
+--que-1
+select max(salary) as Maximun from employee
+select min(salary) as Minimun from employee 
+select sum(salary) as Total_Sal from employee
+select avg(salary) as Average_Sal from employee	 
+
+--que-2
+select count(eid) as Total_Emp from employee
+
+--que-3
+select max(salary) from employee where department = 'IT'
+
+--que-4
+select count(distinct city) as Total_City from Employee
+
+--que-5
+select city,count(city) from employee 
+group by city
+
+--que-6
+select distinct city from employee
+group by city
+having count(eid) > 1
+
+--que-7
+select department,sum(salary) from  employee
+group by department
+
+--que-8
+select avg(salary) from employee
+group by department
+
+--que-9
+select min(salary) from employee 
+where city = 'AHmedabad'
+
+--que-10
+select sum(salary) as total_department from employee
+where city = 'Rajkot' and salary > 50000  
+group by department 
+
+
+--PART-B
+--que-1
+select count(eid) from employee
+where city = 'Rajkot' 
+
+--que-2
+select max(salary),min(salary) 
+ 
