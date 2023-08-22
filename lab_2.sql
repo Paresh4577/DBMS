@@ -501,5 +501,41 @@ select count(eid) from employee
 where city = 'Rajkot' 
 
 --que-2
-select max(salary),min(salary) 
+select max(salary) as Highest ,min(salary) as lowest,
+max(salary)-min(salary) as DIFFERENCE from employee
+
+--que-3
+select eid,ename from Employee
+where joiningdate < '1-jan-1991'
+
+--que-4
+select department,sum(salary) as total_sal from employee
+group by department 
+having sum(salary) > 35000 
+order by sum(salary) asc
+
+--que-5
+select  department from employee
+group by department
+having count(eid) > 2
+
+
+--PART-C
+--que-1
+select count(eid) as Total_Emp from employee
+where city='Rajkot' or city='Baroda'
+
+--que-2
+select max(salary) as Highest ,min(salary) as lowest,
+max(salary)-min(salary) as DIFFERENCE from employee
+
+--que-3
+select ename from employee
+where joiningdate < '1-jan-1991' and department='IT'
+
+--que-4 
+select department,sum(salary) as total_sal from employee
+group by department 
+having sum(salary) > 35000 
+order by sum(salary) desc
  
