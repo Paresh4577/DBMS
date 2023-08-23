@@ -469,7 +469,7 @@ select max(salary) from employee where department = 'IT'
 select count(distinct city) as Total_City from Employee
 
 --que-5
-select city,count(city) from employee 
+select city,count(employee) from employee 
 group by city
 
 --que-6
