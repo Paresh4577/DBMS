@@ -168,3 +168,14 @@ group by city
 --que-20
 select salesman_id,ord_date,count(ord_no) as count from order1
 group by ord_date,salesman_id
+
+--que-21
+select AVG(PRO_PRICE) as avgpro_price from item
+
+--que-22
+select count(pro_id) as total_product from item
+where PRO_PRICE >=350
+
+--que-23
+select AVG(PRO_PRICE),PRO_COM from item
+group by PRO_COM
