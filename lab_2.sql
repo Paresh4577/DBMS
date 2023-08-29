@@ -539,3 +539,149 @@ group by department
 having sum(salary) > 35000 
 order by sum(salary) desc
  
+--QUESTION--7
+--que-1
+select 5*30 as Multiplication
+
+--que-2
+select abs(-25),abs(25),abs(-50),abs(50) as Absolutevalue
+
+--que-3
+select ceiling(25.2),ceiling(25.7),ceiling(-25.2) as SmallestInt
+
+--que-4
+select floor(25.2),floor(25.7),floor(-25.2) as LargestInt
+
+--que-5
+select 5%2 as reminder,5%3 as reminder
+
+--que-6
+select power(3,2) as raise , power(4,3) as raise
+
+--que-7
+select sqrt(25) as squareroot , sqrt(30) as squareroot, sqrt(50) as squareroot
+
+--que-8
+select square(25) as square_ , square(30) as square_, sqrt(50) as square_
+
+--que-9
+select pi() as Value_of_Pi;
+
+--que-10
+select round(157.732,2),round(157.732,0),round(157.732,-2)
+
+--que-11
+select exp(2) as Exponential , exp(3) as Exponential
+
+--que-12
+select log(10) as Logarithm, log(2) as Logarithm
+
+--que-13
+select log(10) as Logarithm, log(5) as Logarithm, log(100) as Logarithm
+
+--que-14
+select sin(3.1415) as Sine , cos(3.1415) as Consine, tan(3.1415) as Tangent
+
+--que-15
+select sign(-25) as Sign_ , sign(0) as Sign_ , sign(25) as Sign_
+
+--que-16
+select rand();
+
+--PART-B
+create table Employee1
+(
+empno int,
+empname varchar(30),
+joiningdate datetime,
+salary decimal(8,2),
+commission int,
+city varchar(20)
+)
+select * from employee1
+
+Insert Into Employee1 
+values 
+(101,'Keyur','5-jan-02',12000.00,4500,'Rajkot'),
+(102,'Hardik','15-feb-04',14000.00,2500,'Ahmedabad'),
+(103,'Kajal','14-mar-06',15000.00,3000,'Baroda'),
+(104,'Bhoomi','23-jun-05',12500.00,1000,'Ahmedabad'),
+(102,'Harmit','15-feb-04',14000.00,2000,'Rajkot')
+
+
+--que-1
+select sum(salary)+sum(commission) as result from Employee1
+
+--que-2
+select ceiling(55.2)as SmallestInt,ceiling(35.7)as SmallestInt,ceiling(-55.2) as SmallestInt
+
+--que-3
+select floor(55.2) as LargestInt,floor(35.7)as LargestInt,floor(-55.2) as LargestInt
+
+--que-4
+select 55%2 as Reminder, 55%3 as Reminder
+
+--que-5
+select power(23,2) as Valueof , power(14,3) as Valueof
+
+--PART-C
+--que-1
+select sqrt(36) as squareroot , sqrt(49) as squareroot, sqrt(81) as squareroot
+
+--que-2
+select square(3) as square_ , square(9) as square_, sqrt(12) as square_
+
+--que-3
+select round(280.8952,2),round(280.8952,0),round(280.8952,-2)
+
+--que-4
+select sin(4.2014) as Sine , cos(4.2014) as Consine, tan(4.2014) as Tangent
+
+--que-5
+select sign(-55) as Sign_ , sign(0) as Sign_ , sign(95) as Sign_
+
+
+--QUESTION-8
+--PART_A
+
+--que-1
+select len('NULL'),len(' hello  '),len('Blank')
+
+--que-2
+select lower('paresh')as lowercase ,upper('paresh') as uppercase
+
+--que-3
+select SUBSTRING('Paresh',1,3) as First3
+
+--que-4
+select SUBSTRING('Paresh_Mori',3,10)
+
+--que-5
+select REPLACE('abc123efg','123','XYZ') , REPLACE('abcabcabc’ ','c','5')
+
+--que-6
+select ascii('a'),ASCII('A'),ASCII('z'),ASCII('Z'),ASCII(0),ASCII(9)
+
+--que-7
+select char(97),char(65),char(122),char(90),char(48),char(57)
+
+--que-8
+select ltrim('  hello world       ')
+
+--que-9
+select rtrim('  hello world       ')
+
+--que-10
+select left('SQL server',4),right('SQL server',5)
+
+--que-11
+select CONVERT(int,'1234.56')
+
+--que-12
+select CONVERT(int,10.58)
+
+--que-13
+select space(10)+('paresh')
+
+--que-14
+select ('paresh')+('mori') , concat('Paresh', ' ' , 'Mori')
