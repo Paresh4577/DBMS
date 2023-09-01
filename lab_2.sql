@@ -685,3 +685,212 @@ select space(10)+('paresh')
 
 --que-14
 select ('paresh')+('mori') , concat('Paresh', ' ' , 'Mori')
+
+
+
+--QUESTION-9
+--que-1
+select GETDATE() as Today_date
+
+--que-2
+select GETDATE() + 365 as oneyearAfter_date
+
+--que-3
+select CONVERT(varchar,getdate(),107) as Today_date
+
+--que-4
+select CONVERT(varchar,getdate(),106) as Today_date
+
+--que-5
+select CONVERT(varchar,getdate(),07) as Today_date
+
+--que-6
+select DATEDIFF(month,'31-dec-08','31-mar-09') as diffmonth
+
+--que-7
+select DATEDIFF(year,'25-jan-12','14-sep-10') as diffyear
+
+--que-8
+select datediff(hour,'25-Jan-12 7:00','26-Jan-12 10:30') as hourdiff
+
+--que-9
+select DAY('12-May-16') as day_ ,MONTH('12-May-16')as month_,YEAR('12-May-16')as year_
+
+--que-10
+select DATEADD(YEAR,5,GETDATE()) as five_year_afterdate
+
+--que-11
+select DATEADD(MONTH,-2,GETDATE())
+
+--que-12
+select DATENAME(MONTH,GETDATE()) , DATEPART(MONTH,GETDATE())
+
+
+--que-13
+select EOMONTH(GETDATE())
+
+--que-14
+select DATEDIFF(MONTH,'31-aug-03','31-aug-23') as Myage_month , DATEDIFF(year,'31-aug-03','31-aug-23') as Myage_year
+
+
+--PART-B
+create table Emp_detail
+(
+empno int,
+empname varchar(30),
+joiningdate datetime,
+salary decimal(8,2),
+city varchar(20)
+)
+
+select * from Emp_detail
+
+insert into Emp_detail values
+(101,'keyur','15-jan-02',12000.00,'Rajkot'),
+(102,'Hardik','15-feb-04',14000.00,'Ahmedabad'),
+(103,'kajal','14-mar-02',15000.00,'Baroda'),
+(104,'Bhoomi','23-may-05',12500.00,'Ahmedabad'),
+(102,'Harmit','15-feb-04',14000.00,'Rajkot'),
+(105,'Jay','12-mar-07',12000.00,'Surat')
+
+--que-1
+select DATEADD(YEAR,365,joiningdate) from emp_detail;
+
+--que-2
+select CONVERT(varchar,joiningdate) from emp_detail
+
+--que-3
+select CONVERT(varchar,joiningdate,106) from emp_detail
+
+--que-4
+select CONVERT(varchar,joiningdate,07) from emp_detail
+
+--que-5
+select DATEDIFF(MONTH,joiningdate,'31-MAR-09')as total_num_of_month from Emp_detail
+
+--que-6
+select DATEDIFF(year,joiningdate,'14-sep-10')as total_num_of_year from Emp_detail
+
+--PART-c
+--que-1
+select DAY(joiningdate)as Total_days_ ,MONTH(joiningdate)as Total_months_,YEAR(joiningdate)as Total_year from Emp_detail
+
+--que-2
+select DATEADD(YEAR,5,joiningdate)as fiveyearafter_date from Emp_detail
+
+--que-3
+select DATEADD(MONTH,-2,joiningdate)as Substract2_months from Emp_detail
+
+--que-4
+select DATENAME(MONTH,joiningdate)as MonthName_ , DATEPART(MONTH,joiningdate)as MonthNum_ from Emp_detail
+
+--que-5
+select DATEDIFF(MONTH,'31-aug-03','31-aug-23') as Myage_month , DATEDIFF(year,'31-aug-03','31-aug-23') as Myage_year
+
+
+--QUESTION-10
+create table Computer
+(
+rollno int,
+Name_ varchar(30)
+)
+
+create table Electrical
+(
+rollno int,
+Name_ varchar(30)
+)
+
+insert into Computer values
+(101,'Ajay'),
+(109,'Haresh'),
+(115,'Manish')
+
+insert into Electrical values
+(105,'Ajay'),
+(107,'Mahesh'),
+(115,'Manish')
+
+--PART-A
+--que-1
+select Name_ from Computer
+union
+select Name_ from Electrical
+
+--que-2
+select Name_ from Computer
+union all
+select Name_ from Electrical
+
+--que-3
+select Name_ from Computer
+intersect
+select Name_ from Electrical
+
+--que-4
+select Name_ from Computer
+except
+select Name_ from Electrical
+
+--que-5
+select Name_ from Electrical
+except
+select Name_ from Computer
+
+--que-6
+select * from Computer
+union
+select * from Electrical
+
+--que-7
+select * from Computer
+intersect
+select * from Electrical
+
+--PART-b
+create table Employee
+(
+eid int,
+Name_ varchar(30)
+)
+
+create table Customer_
+(
+cid int,
+Name_ varchar(30)
+)
+
+insert into Employee values
+(1,'Ajay'),
+(9,'Haresh'),
+(5,'Manish')
+
+insert into Customer_ values
+(5,'Ajay'),
+(7,'Mahesh'),
+(5,'Manish')
+
+--que-1
+select Name_ from Employee
+union
+select Name_ from Customer_
+
+--que-2
+select Name_ from Employee
+union all
+select Name_ from Customer_
+
+--que-3
+select Name_ from Employee
+intersect
+select Name_ from Customer_
+
+--que-4
+select Name_ from Employee
+except
+select Name_ from Customer_
+
+--que-5
+select Name_ from Customer_
+except
+select Name_ from Employee
