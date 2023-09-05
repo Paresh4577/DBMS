@@ -894,3 +894,224 @@ select Name_ from Customer_
 select Name_ from Customer_
 except
 select Name_ from Employee
+
+
+--Extra Queries 1
+
+create table t_employee
+(
+id int,
+name_ varchar(30),
+department varchar(30),
+salary int,
+year_of_experience int
+)
+
+create table t2_employee
+(
+id int,
+name_ varchar(30),
+department varchar(30),
+salary int,
+year_of_experience int
+)
+
+create table t1_student
+(
+id int,
+name_ varchar(30),
+hometown varchar(30),
+percentage_ int,
+favourite_subject varchar(30)
+)
+
+create table t2_student
+(
+id int,
+name_ varchar(30),
+hometown varchar(30),
+percentage_ int,
+favourite_subject varchar(30)
+)
+
+insert into t_employee values
+(1,'Aakash singh','Development',72000,2),
+(2,'Abhishek pawar','Production',45000,1),
+(3,'pranav deshmukh','hr',59900,3),
+(4,'Shubham Mahale','Accounts',57000,2)
+
+insert into t2_employee values
+(1,'Prashanth Wagh','R&D',49000,1),
+(2,'Abhishek pawar','Production',45000,1),
+(3,'Gautam Jain','Development',56000,4),
+(4,'Shubham Mahale','Accounts',57000,2)
+
+insert into t1_student values
+(1,'Soniya jain','udaipur',89,'physics'),
+(2,'Harshada Sharma','Kanpur',92,'Chemistry'),
+(3,'Anuja Rajput','Jaipur',78,'History'),
+(4,'Pranali Singh','Nashik',88,'Geography')
+
+insert into t2_student values
+(1,'Soniya jain','udaipur',89,'physics'),
+(2,'Ishwari Dixit','Delhi',86,'Hindi'),
+(3,'Anuja Rajput','Jaipur',78,'History'),
+(4,'Pakhi Arora','Surat',70,'Sanskrit')
+
+--que-1
+select * from t_employee
+union
+select * from t2_employee
+
+--que-2
+select * from t1_student
+union
+select * from t2_student
+
+--que-3
+select * from t_employee
+union all
+select * from t2_employee
+
+--que-4
+select * from t1_student
+union all
+select * from t2_student
+
+--que-5
+select * from t_employee
+intersect
+select * from t2_employee
+
+--que-6
+select * from t1_student
+intersect
+select * from t2_student
+
+--que-7
+select * from t_employee
+except
+select * from t2_employee
+
+--que-8
+select * from t1_student
+except
+select * from t2_student
+
+	
+--Extra Queries 2
+create table employees
+(
+employee_id int,
+employee_name varchar(30),
+department varchar(20)
+)
+
+create table contractors
+(
+contractor_id int,
+contractor_name varchar(30),
+department varchar(20)
+)
+
+
+
+--que-1
+select employee_name from employees where department='it'
+union
+select contractor_name from contractors where department='it'
+
+--que-2
+select employee_name from employees where department='it'
+union all
+select contractor_name from contractors where department='it'
+
+--que-3
+select employee_name from employees where department='it'
+intersect
+select contractor_name from contractors where department='it'
+
+--que-4
+select * from employees where department = 'marketing'
+except
+select * from contractors where department = 'marketing'
+
+--que-5
+select employee_name from employees
+union
+select contractor_name from contractors
+
+--que-6
+select employee_name from employees
+union all
+select contractor_name from contractors
+
+--que-7
+select employee_name from employees where department = 'marketing'
+intersect
+select contractor_name from contractors where department = 'marketing'
+
+--que-8
+select * from contractors where department = 'finance'
+except
+select * from employees where department = 'finance'
+
+--que-9
+select * from employees
+union
+select * from contractors
+
+--que-10
+select * from employees
+union all
+select * from contractors
+
+--que-11
+select employee_name from employees where department='it' or department='sales'
+union 
+select contractor_name from contractors where department='it' or department='sales'
+
+--que-12
+select employee_name from employees where department='it' or department='sales'
+union all
+select contractor_name from contractors where department='it' or department='sales'
+
+--que-13
+select employee_name from employees where department='finance'  or department='marketing'
+intersect
+select contractor_name from contractors where department='finance'  or department='marketing'
+
+--que-14
+select * from employees where department = 'hr'
+except
+select * from contractors where department = 'hr'
+
+--que-15
+select * from employees
+union
+select * from contractors
+
+--que-16
+select * from employees
+union all
+select * from contractors
+
+--que-17
+select employee_name from employees where department='it'  or department='marketing'
+intersect
+select contractor_name from contractors where department='it'  or department='marketing'
+
+--que-18
+select * from contractors where department = 'sales'
+except
+select * from employees where department = 'sales'
+
+--que-19
+select employee_name from employees
+union
+select contractor_name from contractors
+
+--que-20
+select employee_name from employees
+union all
+select contractor_name from contractors
