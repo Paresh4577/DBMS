@@ -1115,3 +1115,70 @@ select contractor_name from contractors
 select employee_name from employees
 union all
 select contractor_name from contractors
+
+
+
+--QUESTIOn-13
+create table Student1
+(
+rno int,
+name varchar(30),
+branch varchar(30)
+)
+
+create table Result
+(
+rno int,
+spi decimal(8,2)
+)
+
+create table Employee_
+(
+employeeno varchar(30),
+name varchar(30),
+managerno varchar(30),
+)
+
+--PART-A
+--que-1
+select * from Student1
+cross join result 
+
+--que-2
+select s.rno,s.name,s.branch,r.spi 
+from student1 s
+inner join result r on s.rno=r.rno
+
+--que-3
+select s.rno,s.name,s.branch,r.spi 
+from student1 s
+inner join result r on s.rno=r.rno
+where branch='ce'
+
+--que-4
+select s.rno,s.name,s.branch,r.spi 
+from student1 s
+inner join result r on s.rno=r.rno
+where branch!='ec'
+
+--que-5
+select distinct branch,avg(spi) from Student1 s
+inner join result r on s.rno=r.rno
+
+--que-8
+select * from Student1 s
+left outer join result r on s.rno=r.rno
+
+--que-9
+select * from Student1 s
+right outer join result r on s.rno=r.rno
+
+--que-10
+select * from Student1 s
+full outer join result r on s.rno=r.rno
+
+--que-11
+select empolyee_.name as emp_name,empolyee_.name as manager_name
+from empolyee_ 
+inner join empolyee_ 
+on empolyee_.managerno = empolyee_.employeeno
