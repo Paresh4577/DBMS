@@ -1182,3 +1182,180 @@ select empolyee_.name as emp_name,empolyee_.name as manager_name
 from empolyee_ 
 inner join empolyee_ 
 on empolyee_.managerno = empolyee_.employeeno
+
+
+--Que-13 
+--PART-B
+create table person
+(
+personid int,
+person_name varchar(30),
+departmentid int,
+salary int,
+joiningdate datetime,
+city varchar(30)
+)
+create table department
+(
+departmentid int,
+department_name varchar(30),
+departmentcode varchar(30),
+location varchar(30)
+)
+
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(101, 'Rahul Tripathi' ,2 ,56000 ,'01-01-2000' ,'Rajkot');
+-- 2
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(102, 'Hardik Pandya' ,3, 18000 ,'25-SEP-2001' ,'Ahmedabad');
+-- 3
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(103, 'Bhavin Kaanni' ,4, 25000 ,'14-may-2000' ,'Baroda');
+-- 4
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(104, 'Bhoomi Vaishnav', 1, 39000, '08-02-2005', 'Rajkot');
+-- 5
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(105, 'Rohit Topiya' ,2, 17000 ,'23-jul-2001' ,'Jamnagar');
+-- 6
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(106, 'Priya Menpara', NULL, 9000, '18-oct-2000', 'Ahmedabad');
+-- 7
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(107, 'Neha Sharma', 2, 34000, '25-dec-2002', 'Rajkot');
+-- 8
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(108, 'Nayan Goswami', 3, 25000, '01-07-2001', 'Rajkot');
+-- 9
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(109, 'Mehul Bhundiya', 4, 13500, '09-01-2005', 'Baroda');
+-- 10
+insert into  Person
+(PersonID,person_name,DepartmentID,Salary,JoiningDate,City)
+values
+(110, 'Mohit Maru', 5, 14000, '25-may-2000', 'Jamnagar');
+
+insert into Department
+values
+(1,'Admin','Adm','A-Block')
+
+insert into Department
+values
+(2,'Computer','CE','C-Block')
+
+insert into Department
+values
+(3,'Civil','CI','G-Block')
+
+insert into Department
+values
+(4,'Electrical','EE','E-Block')
+
+insert into Department
+values
+(5,'Mechanical','ME','B-Block')
+--Part-C
+--que-1
+select distinct city from person
+select * from person
+--que-2
+select d.department_name from person p 
+inner join department d
+on p.departmentid=d.departmentid
+where p.departmentid > 2
+group by(d.department_name)
+
+--que-3
+
+
+
+
+--Extra Queries
+create table products
+(
+productid int,
+product_name varchar(30)
+)
+
+create table  orders
+(
+orderid int,
+order_date datetime,
+customerid int,
+productid int,
+quantity int
+)
+
+create table customers_
+(
+customerid int,
+customer_name varchar(30),
+email varchar(30),
+city varchar(30)
+)
+
+
+
+--que-1
+select c.customer_name,o.* from orders o
+inner join customers_ c
+on o.customerid=c.customerid
+
+--que-2
+select sum(o.quantity)as total_qty,p.product_name from products p
+inner join orders o 
+on p.productid=o.productid
+group by (product_name)
+
+--que-3
+select c.customer_name from CUSTOMERS_ c
+inner join orders o
+on c.customerid=o.customerid
+where o.productid = 2
+
+--que-4
+select * from orders 
+where DATENAME(month,order_date)='August' and DATENAME(year,order_date)=2023
+
+--que-5
+select sum(o.quantity),c.customer_name from orders o
+inner join customers_ c 
+on o.customerid=c.customerid
+group by customer_name
+
+--que-6
+select c.customer_name,SUM(o.quantity) as total_qty from customers_ c
+inner join orders o 
+on c.customerid=o.customerid
+group by customer_name
+having SUM(o.quantity)>10
+
+--que-7
+select o.*,c.email from orders o 
+inner join customers_ c
+on c.customerid=o.customerid
+
+--que-8
+select sum(o.quantity)as total_qty,p.product_name,c.customer_name from products p
+inner join orders o  on p.productid=o.productid
+inner join customers_ c on o.customerid=c.customerid
+where c.city = 'newyork'
+group by p.product_name,c.customer_name
