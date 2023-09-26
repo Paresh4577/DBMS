@@ -1359,3 +1359,140 @@ inner join orders o  on p.productid=o.productid
 inner join customers_ c on o.customerid=c.customerid
 where c.city = 'newyork'
 group by p.product_name,c.customer_name
+
+
+--Question-11
+ create table Cricket
+ (
+ Name varchar(30),
+ City varchar(30),
+ Age int
+ )
+
+ insert into Cricket values
+ ('sachin Tendulkar','Mumbai',30),
+  ('Rahul Dravid','Bombay',35),
+   ('M.S Dhoni','Jharkhand',31),
+    ('Suresh Raina','Gujarat',30)
+
+
+--que-1
+select * into worldcup from Cricket	
+
+--que-2
+select name,city into t20 from Cricket
+
+--que-3
+select * into ipl from cricket
+where 1=2
+
+--que-4
+insert into ipl 
+select * from Cricket
+where name like'_a_____%'
+
+select * from Cricket
+
+--que-5
+truncate table ipl2018
+
+--que-6
+delete from cricket
+where city='jharkhand'
+
+--que-7
+sp_rename 'ipl','ipl2018'
+
+--que-8
+drop table t20
+
+--PART-B
+create table emp
+(
+Name varchar(30),
+ City varchar(30),
+ Age int
+)
+select * from emp
+ insert into emp values
+ ('Jay Patel','Rajkot',30),
+  ('Rahul Dave','Baroda',35),
+   ('Jeet patel','Surat',31),
+    ('Vijay Raval','rajkot',30)
+
+--que-1
+select * into Employee_detail from emp	
+
+--que-2
+select name,city into employee_data from emp
+where 1=2
+
+--que-3
+select * into employee_info from emp
+where 1=2
+
+--que-4
+insert into employee_info 
+select * from emp
+where name like'_a_____%'
+
+--que-5
+insert into employee_info 
+select * from emp 
+where age>32
+
+
+--PART-C
+--que-1
+truncate table employee_info
+
+--que-2
+delete from emp
+where city='Rajkot'
+
+--que-3
+sp_rename 'emp','New_Employee'
+
+--que-4
+truncate table New_Employee
+
+--que-5
+drop table New_Employee
+
+
+--QUESTION-14
+create table city
+(
+  cityid int primary key,
+  name varchar(50) unique,
+  pincode int not null,
+  remarks varchar(50) null
+)
+select * from city
+create table village
+(
+vid int primary key,
+name varchar(50) not null,
+cityid int foreign key references city(cityid)
+)
+
+insert into city 
+values
+(1,'Rajkot',360005,'Good' ),
+(2,'Surat', 335009,'Very Good '),
+(3,'Baroda',390001,'Awesome'),
+(4,'Jamnagar', 361003, 'Smart' ),
+(5,'Junagadh', 362229,' Historic' ),
+(6,' Morvi', 363641, 'Ceramic')
+
+
+
+insert into village values
+(101,'Raiya',1),
+(102,'Madhapar',1),
+(103,'Dodka',3),
+(104,'Falla',4),
+(105,'Bhesan',5),
+(106,'Dhoraji',5)
+
+--que-1
