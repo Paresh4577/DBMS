@@ -1543,9 +1543,10 @@ inner join village v on c.cityid=v.cityid
 group by c.name
 
 --que-6
-select c.name,count(c.cityid) city  from city c
+select count(c.cityid) city  from city c
 inner join village v on c.cityid=v.cityid
-group by c.cityid,c.name
+where v.cityid>1
+group by c.cityid
 having count(v.cityid)>1
 
 create table student_
