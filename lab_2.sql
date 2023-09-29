@@ -1621,6 +1621,29 @@ VALUES
     (9, 'Project I', 1),
     (10, 'Project J', 9);
 
+/*1. List employees and their departments
+2. List employees and the projects they are assigned to
+3. List employees, their departments, and the projects they are assigned to
+4. List all employees and their departments (including employees without departments):
+5. List all employees and the projects they are assigned to (including employees not assigned to any project):
+6. List all departments and the employees in each department (including departments with no employees):
+7.  List all projects and the employees assigned to each project (including projects with no assigned employees)
+8. List all employees and their departments (including employees without departments) and all departments (including those without employees):
+9. Calculate the total salary per department:
+10. List  employees and their project count (including employees not assigned to any project):
+11.  List all departments and their employee count (including departments with no employees):
+12. List employees and their managers (HODs):
+13. List employees who are assigned to more than one project:
+14.  List employees and their project count, even if they have no projects assigned:
+15. List departments and the highest salary within each department (including departments with no employees):
+16. List employees and their colleagues (employees in the same department):
+17. List employees and the average salary of their department
+18. Retrieve Employees Who Earn More Than $50,000:
+19. All Employees and Their Head of Department (HOD) 
+20. Find Projects Without Assigned Employees:
+21. Retrieve Employees and Their Respective Department Names with Alias
+22. Find the Highest Salary Among Employees:*/
+
 --que-1
 select e.ename,d.dname from emp e
 inner join dept d on e.deptid=d.did
