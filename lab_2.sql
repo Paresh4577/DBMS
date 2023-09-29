@@ -1495,4 +1495,156 @@ insert into village values
 (105,'Bhesan',5),
 (106,'Dhoraji',5)
 
+
+
+insert into city 
+values
+(1,'Rajkot',360005,'Good' ),
+(2,'Surat', 335009,'Very Good '),
+(3,'Baroda',390001,'Awesome'),
+(4,'Jamnagar', 361003, 'Smart' ),
+(5,'Junagadh', 362229,' Historic' ),
+(6,' Morvi', 363641, 'Ceramic')
+
+
+
+insert into village values
+(101,'Raiya',1),
+(102,'Madhapar',1),
+(103,'Dodka',3),
+(104,'Falla',4),
+(105,'Bhesan',5),
+(106,'Dhoraji',5)
+
 --que-1
+select c.name as City_name,v.name as Village_name from city c
+inner join village v on c.cityid=v.cityid 
+where c.name='rajkot'
+
+--que-2
+select c.name,c.pincode,v.name from city c
+inner join village v on c.cityid=v.cityid
+
+--que-3
+select c.name from city c
+inner join village v on c.cityid=v.cityid
+group by c.name
+having COUNT(v.cityid)>1
+
+--que-4
+select c.name as City_name,COUNT(v.cityid) as City_id from city c
+left outer join village v on c.cityid=v.cityid
+group by c.name
+having count(v.cityid)=0
+
+--que-5
+select c.name as city,COUNT(v.vid) as total_villages from city c
+inner join village v on c.cityid=v.cityid
+group by c.name
+
+--que-6
+select c.name,count(c.cityid) city  from city c
+inner join village v on c.cityid=v.cityid
+group by c.cityid,c.name
+having count(v.cityid)>1
+
+create table student_
+(
+rno int primary key,
+name varchar(30),
+branch varchar(20),
+spi decimal(8,2),
+bklog int
+)
+
+insert into student_ values
+(101,'raju','CE',8.80,0),
+(102,'Amit','CE',2.20,3),
+(103,'Sanjay','ME',1.50,6),
+(104,'Neha','EC',7.65,0),
+(105,'Meera','EE',5.52,2),
+(106,'Mahesh','CE',8.80,0)
+
+--Extra Queries
+create table emp
+(
+eid int,
+ename varchar(30),
+deptid int,
+salary int,
+hod int
+)
+select * from emp
+
+INSERT INTO emp (EID, Ename, DeptID, Salary, HOD)
+VALUES
+    (1, 'John Smith', 101, 60000, NULL),
+    (2, 'Jane Doe', 102, 55000, 1),
+    (3, 'Bob Johnson', 101, 62000, NULL),
+    (4, 'Alice Williams', 103, 58000, 1),
+    (5, 'Charlie Brown', 102, 54000, 3),
+    (6, 'Eva Davis', 101, 61000, 3),
+    (7, 'Frank Wilson', 103, 59000, 6),
+    (8, 'Grace Lee', 102, 56000, 6),
+    (9, 'David Taylor', 101, 63000, 3),
+    (10, 'Helen Anderson', 103, 57000, 6);
+
+create table dept
+(
+did int,
+dname varchar(30)
+)
+INSERT INTO dept (DID, Dname)
+VALUES
+    (101, 'HR'),
+    (102, 'IT'),
+    (103, 'Finance'),
+    (104, 'Marketing');
+
+create table project 
+(
+pid int,
+pname varchar(30),
+eid int
+)
+
+INSERT INTO Project (PID, Pname, EID)
+VALUES
+    (1, 'Project A', 2),
+    (2, 'Project B', 4),
+    (3, 'Project C', 6),
+    (4, 'Project D', 8),
+    (5, 'Project E', 10),
+    (6, 'Project F', 3),
+    (7, 'Project G', 5),
+    (8, 'Project H', 7),
+    (9, 'Project I', 1),
+    (10, 'Project J', 9);
+
+--que-1
+select e.ename,d.dname from emp e
+inner join dept d on e.deptid=d.did
+
+--que-2
+select e.ename,p.pname from emp e
+inner join project p on e.eid=p.eid
+
+--que-3
+select e.ename,d.dname,p.pname from emp e
+inner join dept d on e.deptid=d.did
+inner join project p on e.eid=p.eid
+
+--que-4
+select e.ename,d.dname from emp e
+right outer join dept d on e.deptid=d.did
+group by e.ename,d.dname
+having COUNT(e.deptid)=0
+
+--que-5
+select e.ename,p.pname from emp e
+inner join project p on e.eid=p.eid
+group by e.ename,p.pname
+having COUNT(p.pid)=0
+
+--que-6
+
