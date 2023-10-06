@@ -1672,3 +1672,233 @@ having COUNT(p.pid)=0
 
 --que-6
 
+
+
+----------Extra Queries-------
+-- Create the Department table
+CREATE TABLE Department (
+    DID INT PRIMARY KEY,
+    Dname VARCHAR(255) NOT NULL
+);
+
+-- Create the Employee table with a foreign key reference to Department for DeptID and HOD (Manager)
+CREATE TABLE Employee (
+    EID INT PRIMARY KEY,
+    Ename VARCHAR(255) NOT NULL,
+    DeptID INT,
+    Salary DECIMAL(10, 2),
+    HOD INT,
+    FOREIGN KEY (DeptID) REFERENCES Department(DID),
+    FOREIGN KEY (HOD) REFERENCES Employee(EID)
+);
+
+CREATE TABLE STUD
+(
+	RNo INT PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(50) NULL,
+	BRANCH VARCHAR(50) DEFAULT 'GENRAL',
+	SPI DECIMAL(4,2) CHECK(SPI BETWEEN 0 AND 10),
+	BKLOG INT CHECK(BKLOG>=0)
+);
+
+
+
+--Emp(Eid, Ename, Did, Cid, Salary, Experience)
+--Dept(Did, Dname)
+--City(Cid, Cname, Did))
+--District(Did, Dname, Sid)
+--State(Sid, Sname, Cid)
+--Country(Cid, Cname)
+
+CREATE TABLE COUNTRY
+(
+	Cid INT IDENTITY(1,1) PRIMARY KEY,
+	Cname VARCHAR(50) NOT NULL
+);
+CREATE TABLE DEPT
+(
+	Did INT IDENTITY(1,1) PRIMARY KEY,
+	Dname VARCHAR(50) NULL
+);
+CREATE TABLE STATE1
+(
+	Sid INT IDENTITY(1,1) PRIMARY KEY,
+	Sname VARCHAR(50) NULL,
+	Cid INT NOT NULL FOREIGN KEY REFERENCES COUNTRY(Cid)
+);
+CREATE TABLE DISTRIC
+(
+	Destid INT IDENTITY(1,1) PRIMARY KEY,
+	Destname VARCHAR(50) NULL,
+	Sid INT NOT NULL FOREIGN KEY REFERENCES STATE1(Sid)
+);
+CREATE TABLE CITY
+(
+	Cid INT IDENTITY(1,1) PRIMARY KEY,
+	Cname VARCHAR(50) NULL,
+	Destid INT NOT NULL FOREIGN KEY REFERENCES DISTRIC(Destid)
+);
+CREATE TABLE EMP
+(
+	Eid INT IDENTITY(1,1) PRIMARY KEY,
+	Ename VARCHAR(50) NULL,
+	Did INT NULL FOREIGN KEY REFERENCES DEPT(Did),
+	Cid INT NULL FOREIGN KEY REFERENCES CITY(Cid),
+	Salary DECIMAL(8,2) NULL,
+	Experience INT CHECK(Experience >= 0) DEFAULT 0
+);
+
+
+
+----------Extra Queries--------
+
+create table department	
+(
+deptid int primary key not null,
+deptcode int null,
+deptname varchar(50) not null default 'general'
+
+)
+
+create table student1
+(
+rollno int primary key not null,
+name varchar(50) not null,
+deptid int foreign key references department(deptid),
+city varchar(50) null
+)
+
+create table result 
+(
+rollno int foreign key references student1(rollno) ON DELETE CASCADE,
+semester int not null check(semester between 0 and 8),
+spi decimal(8,2) check(spi between 0 and 10)
+)
+
+insert into department values
+(1,4,'ME'),
+(2,5,'CE'),
+(3,6,'BTECH'),
+(4,7,'BCA'),
+(5,10,'MCA'),
+(6,5,'MBA')
+
+
+insert into student1 values
+(101,'Paresh',1,'Rajkot'),
+(102,'Rohit',2,'Rajkot'),
+(103,'Dax',3,'Jamnagar'),
+(104,'Raj',2,'Ahmedabad'),
+(105,'Mohit',4,'Baroda'),
+(106,'Anand',5,'Jamnagar')
+
+insert into result values
+(101,1,8.50),
+(101,1,7.50),
+(102,3,7.34),
+(103,1,6.50),
+(104,5,8.50),
+(105,5,7.00),
+(106,3,8.23)
+
+select * FROM student1
+select * FROM result
+--que-1
+select name,rollno from student1
+where name like ('%sh')
+
+--que-2
+select deptname,SUM(rollno) from department d
+inner join student1 s on d.deptid=s.deptid
+group by deptname,rollno
+having SUM(rollno)>500
+
+--que-3
+select s.rollno,name,spi from student1 s
+inner join result r on s.rollno=r.rollno
+
+--que-5
+alter table student1 
+add mobileno int 
+
+--que-6
+select name,deptcode from student1 s
+inner join department d on s.deptid=d.deptid
+where deptcode in(5,6,7,10)
+
+--que-7
+drop table student1
+
+
+
+create table product
+(
+pid int primary key not null,
+pname varchar(50) not null,
+description varchar(50) null,
+price int not null,
+maunfacture_id int foreign key references manufacture(manufacture_id)
+)
+alter table product 
+add category_id int foreign key references category(category_id)
+create table manufacture 
+(
+manufacture_id int primary key not null,
+manufacture_name varchar(50) not null,
+location varchar(50) null
+)
+
+create table category 
+(
+category_id int primary key not null,
+category_name varchar(50)
+)
+
+create table Customer 
+(
+customer_id int primary key not null,
+customer_name varchar(50) not null
+)
+
+create table order1
+(
+oid int primary key not null,
+odate datetime null default '6-oct-2023',
+customer_id int foreign key references Customer(customer_id),
+quantity int default 0 not null
+)
+
+insert into manufacture values
+(1,'waffers','Rajkot'),
+(2,'ice-cream','Diu'),
+(3,'Chocklate','Rajkot'),
+(4,'Biscuits','Ahmedabad'),
+(5,'shoes','Baroda')
+
+insert into category values
+(1,'snakes'),
+(2,'cold-food'),
+(3,'Chocklates'),
+(4,'fast-food'),
+(5,'Wearing')
+
+insert into Customer values
+(1,'Paresh'),
+(2,'raj'),
+(3,'jay'),
+(4,'Mohit'),
+(5,'Rohit')
+
+insert into product values
+(1,'Lays','Lays',10,1,1),
+(2,'vanilla','vanilla',40,2,2),
+(3,'five-star','five-star',10,3,3),
+(4,'Oreo','Oreo',25,4,4),
+(5,'Nike','Nike',2500,5,5)
+
+insert into order1 values
+(1,'3-jan-2022',1,200),
+(2,'6-feb-2022',2,100),
+(3,'7-mar-2022',3,240),
+(4,'4-jan-2022',4,20),
+(5,'8-jun-2022',5,300)
