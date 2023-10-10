@@ -1902,3 +1902,166 @@ insert into order1 values
 (3,'7-mar-2022',3,240),
 (4,'4-jan-2022',4,20),
 (5,'8-jun-2022',5,300)
+
+
+QUERIES
+
+1) Display Student name ,SPI , department name and city
+2) Display list of student whose SPI grater than equal to 9
+3) Display name and city of student who lives in Rajkot
+4) Display department average SPI
+5) Display CE department student name and SPI
+6) Display student SPI in descending order
+7) Count the Number of department 
+8) Count the number of student
+9) Display department wise average SPI
+10)Display maximum SPI from each department
+11) Update Student SPI of deep  9.5 to 9.6
+12) 10% increment in SPI of  each student 
+13) Update city of meet to surat
+14) Change name of Table Student to Student_Master
+15) Add new column Backlog to student table
+16) Count number of collage
+17)  Rename column SPI to CPI
+18) Display department wise average SPI of student whose Average SPI is  more than 8.5
+19) Display name of student which contain ee  in their name
+20)Display <Student name > from <city name> and is collage name is <collage name>
+21) Count number of student from each city in each department
+22) Display first 3 letter of name of all students
+23) Display lowest SPI in each city
+24) Delete Student name whose start with M
+25) Delete column backlog
+26) Maximum , Minimum , Average SPI from IT department
+27) Display name of student which contain 4 letter and end with P
+28) Change Data type of name column to varchar(100)
+29) Display Name of Student whose SPI is grater than 8 and contain 6 character only
+30) Display collage name in descending order and contain more than 4 character
+
+	
+---EXTRA MIXED QUERIES
+
+create table department1
+(
+deptid int identity(1,1) primary key not null,
+dname varchar(50) not null,
+location varchar(50) not null
+)
+
+create table city2
+(
+cityid int identity(1,1) primary key not null,
+cname varchar(50) not null
+)
+
+create table student2
+(
+studentid int identity(1,1) primary key not null,
+studentname varchar(30) not null,
+spi decimal(4,2) not null check(spi between 0 and 10),
+collegename varchar(30),
+deptid int foreign key references department1(deptid),
+cityid int foreign key references city2(cityid),
+)
+
+insert into department1 values
+('CE','A-BLOCK'),
+('ME','B-BLOCK'),
+('IT','C-BLOCK'),
+('BBA','E-BLOCK')
+
+insert into city2 values
+('Rajkot'),
+('Surat'),
+('Morbi'),
+('Ahmedabad')
+
+insert into student2 values
+('Deep',9.5,'DARSHAN',1,1),
+('Meet',9.8,'MARVADI',2,3),
+('JAY',8.0,'ATMIYA',1,2),
+('Miral',8.5,'RK',2,3),
+('Bhavin',7.5,'DARSHAN',3,1),
+('AKSHAY',9.0,'MARVADI',3,2)
+
+--que-1
+select studentname,spi,dname as department_name,cname as city_name from student2 s
+inner join department1 d on s.deptid=d.deptid
+inner join city2 c on s.cityid=c.cityid
+
+--que-2
+select studentname from student2
+where spi >=9
+
+--que-3
+select studentname,cname as city_name from student2 s
+inner join city2 c on s.cityid=c.cityid
+where cname = 'Rajkot'
+
+--que-4
+select distinct dname,avg(spi) from student2 s
+right outer join department1 d on s.deptid=d.deptid
+group by dname
+
+--que-5
+select studentname,dname from student2 s
+inner join department1 d on s.deptid=d.deptid
+where dname = 'CE'
+
+--que-6
+select studentname,spi from student2
+order by spi desc
+
+--que-7
+select count(dname) from department1
+
+--que-8
+select count(studentname) from student2
+
+--que-9
+select dname,avg(spi) as Avg_Spi from student2 s
+inner join department1 d on s.deptid=d.deptid
+group by dname
+
+--que-10
+select dname,max(spi) from student2 s
+inner join department1 d on s.deptid=d.deptid
+group by dname
+
+--que-11
+update student2 set spi = 9.6
+where studentname = 'Deep'
+
+--que-12
+update student2 set spi = spi+(spi*10/100)
+select * from student2
+
+--que-13
+update city2 set cname = 'Surat'
+from city2 c inner join student2 s
+on c.cityid=s.cityid
+where studentname = 'Meet'
+
+--que-14
+sp_rename 'student2','Student_Master'
+
+--que-15
+alter table student_master add backlog int
+select * from Student_Master
+
+--que-16
+select count(collegename) from student_master
+
+--que-17
+
+
+--que-18
+select dname,avg(spi) as Avg_Spi from student_master s
+inner join department1 d on s.deptid=d.deptid
+group by dname 
+having avg(spi) > 8.5
+
+--que-19
+select studentname from student_master
+where studentname like ('%ee%')
+
+--que-20
