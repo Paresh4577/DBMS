@@ -2065,3 +2065,114 @@ select studentname from student_master
 where studentname like ('%ee%')
 
 --que-20
+
+
+	
+--question-15
+create table department
+(
+ did int primary key not null identity(10,10),
+ dname varchar(30)
+)
+
+create table student
+(
+rno int identity(101,1)  primary key not null,
+name varchar(30) not null,
+city varchar(30) not null,
+did int foreign key references department(did)
+
+)
+
+create table academic 
+(
+rno int foreign key references student(rno) on delete cascade,
+spi decimal(4,2) check(spi between 0 and 10),
+bklog int not null
+)
+
+
+select * from student
+insert into department values
+( 'Computer'),
+( 'Electrical'),
+( 'Mechanical'),
+('Civi');
+
+insert into student values
+( 'Raju','Rajkot', 10),
+('Amit', 'Ahmedabad', 20),
+( 'Sanjay', 'Baroda', 40),
+( 'Neha', 'Rajkot', 20),
+( 'Meera', 'Ahmedabad', 30),
+('Mahesh', 'Baroda', 10);
+
+insert into academic values
+(102,8.8, 0),
+(104,9.2, 2),
+(105,7.6, 1),
+(106, 8.2, 4),
+(107,7.0, 2),
+( 108,8.9, 3);
+
+--que-1
+select * from student 
+where did in (
+select did from department
+where dname = 'computer')
+
+--que-2
+select name from student 
+where rno in (
+select rno from academic
+where spi>8)
+
+--que-3
+select * from student 
+where did in (
+select did from department
+where dname = 'computer' 
+and city= 'rajkot')
+
+--que-4
+select count(did) from department
+where did in(
+select did from department
+where dname = 'electrical'
+)
+
+--PART-B
+--que-1
+select name from student where rno in( 
+select rno from academic where spi in(
+select MAX(spi) from academic))
+
+--que-2
+select name from student where rno in( 
+select rno from academic where bklog>1)
+
+--que-3
+select name from student
+where rno=(
+select rno from academic
+where spi=(select MAX(spi) from academic
+where spi <(select MAX(spi) from academic)))
+
+
+--PART-C
+--que-1
+select name from student 
+where did in (
+select did from department
+where dname = 'computer' or dname='mechanical')
+
+--que-2
+select name from student where did in(
+select did from student where rno = 102)
+
+
+--que-3
+select name from student 
+where rno in(select rno from academic where spi>9)
+and did in(select did from department where dname = 'electrical') 
+
