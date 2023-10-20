@@ -1,0 +1,146 @@
+--QUESTION-16
+
+create table Student
+(
+stuid int primary key,
+name varchar(30),
+enrollmentno varchar(12) check (len(enrollmentno)=12),
+division varchar(50),
+Sem int,
+Birthdate datetime,
+email varchar(100) check (Email like '%@gmail.com'),
+contactno varchar(50) check(len(contactno)=10)
+)
+
+insert into student values
+(101,'Naimish Patel','090200107051','BCA-X',3,'06-dec-1992','naimishp49@gmail.com',8866205253),
+(102,'Firoz A.S','090200107090','BCY-3',3,'03-may-1994','Firoz.me@gmail.com',8885999922),
+(103,'Krunal Vyas','090243107101','BCZ-5',5,'01-mar-1984','Krunal.vyas@gmail.com',9990888877),	
+(104,'Vjay Patel','090200107102','BCX-5',5,'15-feb-1985','Vijay.patel123@gmail.com',8787878787),	
+(105,'Vimal Trivedi','090200107103','BCY-3 ',3,'20-jan-1988','Maulik123@gmail.com',8789564512)
+
+
+--PART-A
+--que-1
+select name from student
+where sem in(3,5)
+
+--que-2
+select name,enrollmentno from student
+where stuid between 103 and 105
+
+--que-3
+select name,enrollmentno,email from student
+where sem = 5
+
+--que-4
+select top 3 * from student
+
+--que-5
+select name,enrollmentno from student
+where contactno like ('%7')
+
+--que-6
+select distinct sem from student
+
+--que-7
+select * from student
+where enrollmentno is null
+
+--que-8
+select * from student
+where name not like ('V%')
+
+--que-9
+select * from student
+where email  like ('%3@g%')
+
+--que-10
+select * from student
+where name like ('F_R%')
+
+
+
+--PART-B
+--que-1
+select * from student
+where contactno like ('%877%')
+
+--que-2
+select * from student
+where sem =3 and contactno not like '%8%' and contactno not like '%9%'
+
+--que-3
+select * from student
+where Birthdate > '01-jan-1990'
+
+--que-4
+update student set division  = 'BCA-X',sem = 5 where stuid = 102	
+
+--que-5
+update student set name  = 'Firoz Sherasiya',sem = 5 where email like ('Firoz.Me@Gmail.Com') and contactno like ('888%')
+
+--PART-C
+--que-1
+alter table student add city varchar(50)
+
+--que-2
+delete from student
+where division = 'BCX-3'
+
+--que-3
+sp_rename 'student.email','emailaddress'
+
+--que-4
+truncate table student
+
+--que-5
+select * into Student_New from student
+
+
+--QUESTION-17
+create table employee 
+(
+eid int primary key,
+ename varchar(100),
+gender varchar(10),
+joiningdate datetime,
+salary int,
+city varchar(100)
+)
+
+insert into Employee
+values
+(1,'Nick','Male','01-jan-13',4000.00,'London'),
+(2,'Julian','Female','01-oct-14',3000.00,'New York'),
+(3,'Roy','Male','01-jun-16',3500.00,'London'),
+(4,'Tom','Male',NULL,4500.00,'London'),
+(5,'Jerry','Male','01-feb-13',2800.00,'Sydney'),
+(6,'Philip','Male','01-jan-15',7000.00,'New York'),
+(7,'Sara','Female','01-aug-17',4800.00,'Sydney'),
+(8,'Emily','Female','01-jan-15',5500.00,'New York'),
+(9,'Michael','Male',NULL,6500,'London'),
+(10,'John','Male','01-jan-15',8800.00,'London')
+
+--PART-A
+--que-1
+select * from employee
+where ename like ('m__h%')
+
+--que-2
+select power(3,5) as output
+
+--que-3
+select dateadd(day,-20,getdate())
+
+--que-4
+select * from employee
+where ename like ('j%n%')
+
+--que-5
+select substring('SQL Programming',2,9)
+
+--PART-B
+--que-1
+
+
