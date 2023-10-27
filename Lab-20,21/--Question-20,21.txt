@@ -1,0 +1,116 @@
+--Question-20
+
+--PART-A
+create table student1
+(
+rno int identity(101,1) primary key not null,
+Name varchar(20) not null,
+branch varchar(20) not null,
+SPI decimal(8,2) check(spi between 0 and 10) not null,
+bklog int check(bklog>=0)
+)
+
+insert into student1 values
+('Raju','CE',8.80,0),
+('Amit','CE',2.20,3),
+('Sanjay','ME',1.50,6),
+('Neha','EC',7.65,1),
+('Meera','EE',5.52,2),
+('Mahesh','EC',4.50,3)
+
+--que-1
+create view name2
+as select * from student1
+
+select * from name2
+
+--que-2
+create view student_details
+as select name,branch,spi from student1
+
+--que-3
+create view Academic
+as select Rno,name,branch from student1
+
+--que-4
+create view Student_data
+as select * from student1
+where bklog > 2
+
+--que-5
+create view Student_pattern
+as select * from student1
+where name like ('____')
+
+--que-6
+insert into Academic values 
+('Meet','ME')
+
+--que-7
+update student_details set branch='ME' where name='Amit'
+
+--que-8
+Delete from academic where rno=104
+
+
+--PART-C
+--que-1
+Delete from academic where rno=104
+
+--que-2
+create view student3
+as select * from student1
+where spi > 8.5
+
+--que-3
+create view student4
+as select * from student1
+where bklog = 0
+
+--que-4
+create view Computer
+as select * from student1
+where branch='CE'
+
+--que-5
+create view Result_EC
+as select name,spi from student1
+where spi < 5 and branch = 'EC'
+
+--que-6
+update Result_EC set spi = 4.90 where name='Sanjay'
+
+--que-7
+create view Stu_Bklog 
+as select rno,name,bklog from student1
+where name like ('M%') and bklog > 5
+
+--que-8
+drop view computer
+
+
+--Question-21
+
+create table person 
+(
+workerid int identity(101,1) primary key,
+firstname varchar(100) not null,
+lastname varchar(100) not null,
+salary decimal(8,2) not null,
+joiningdate datetime not null,
+departmentid int foreign key references department(departmentid),
+designationid int foreign key references designation(designationid)
+)
+
+create table department
+(
+departmentid int primary key,
+departmentname varchar(100) not null unique
+)
+
+create table designation
+(
+designationid int primary key,
+designationname varchar(100) not null unique
+)
+
