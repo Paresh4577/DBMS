@@ -114,3 +114,142 @@ designationid int primary key,
 designationname varchar(100) not null unique
 )
 
+
+--Question-21
+
+create procedure sp_dept_insert
+@departmentid int , @departmentname varchar(100)
+AS
+Begin 
+insert into department 
+values 
+(@departmentid , @departmentname )
+End
+
+exec sp_dept_insert 1,'Admin'
+exec sp_dept_insert 2,'IT'
+exec sp_dept_insert 3,'HR'
+exec sp_dept_insert 4,'Account'
+
+create procedure sp_designation_insert
+@designationid  int , @designationname  varchar(100)
+AS
+Begin 
+insert into designation 
+values 
+(@designationid  , @designationname )
+End
+
+exec sp_designation_insert 11,'Jobber'
+exec sp_designation_insert 12,'Welder'
+exec sp_designation_insert 13,'Clerk'
+exec sp_designation_insert 14,'Manager'
+exec sp_designation_insert 15,'CEO'
+
+
+create procedure sp_person_insert
+@firstname varchar(100) , @lastname varchar(100),@salary decimal(8,2) ,@joiningdate datetime,@departmentid int,@designationid int
+AS
+Begin 
+insert into person 
+values 
+(@firstname  , @lastname, @salary, @joiningdate, @departmentid, @designationid)
+End
+
+exec sp_person_insert 'Rahul','Anshu',56000,'01-jan-1990',1,12
+exec sp_person_insert 'Hardik','Hinsu',18000,'25-sep-1990',2,11
+exec sp_person_insert 'Bhavin','Kamani',25000,'14-may-1990',NULL,11
+exec sp_person_insert 'Bhoomi','Patel',39000,'20-feb-2014',1,13
+exec sp_person_insert 'Rohit','Rajgor',17000,'23-july-1990',2,15
+exec sp_person_insert 'Priya','Mehta',25000,'18-oct-1990',2,null
+exec sp_person_insert 'Neha','Trivedi',18000,'20-feb-2014',3,15
+
+
+create procedure sp_dept_update
+@departmentid int , @departmentname varchar(100)
+AS
+Begin 
+update department set departmentname = @departmentname where departmentid = @departmentid
+End
+
+exec sp_dept_update 1,'Admin1'
+select * from department
+
+create procedure sp_designation_update
+@designationid int , @designationname varchar(100)
+AS
+Begin 
+update designation set designationname = @designationname where designationid = @designationid
+End
+
+exec sp_designation_update 11,'Jobber'
+select * from designation
+
+
+create procedure sp_person_update1
+@workerid int, @firstname varchar(100)
+AS
+Begin 
+update person set firstname = @firstname where workerid = @workerid
+End
+
+exec sp_person_update1 101,'Rahul1'
+select * from designation
+
+create procedure sp_dept_delete
+@departmentid int
+AS
+Begin 
+delete from department where departmentid = @departmentid
+End
+
+exec sp_dept_delete 3
+
+--que-3
+create procedure sp_dept_select
+@departmentid int
+AS
+Begin 
+select department.departmentid , department.departmentname from department
+End
+
+exec sp_dept_select 3
+	
+--que-4
+create procedure sp_top3_person
+
+AS
+Begin 
+select top 3 * from person
+End
+
+exec sp_top3_person 
+
+--PART-B
+--que-1
+create procedure sp_select_person1
+@departmentname varchar(100)
+as begin 
+select p.* from person p 
+inner join department d on p.departmentid=d.departmentid
+where departmentname = @departmentname
+end
+
+exec sp_select_person1 'IT'
+
+--que-2
+alter procedure sp_select_person2
+@departmentname varchar(100), @designationname varchar(100)
+as 
+begin 
+select p.* from person p 
+inner join department d on p.departmentid=d.departmentid
+inner join designation ds on p.designationid=ds.designationid
+where departmentname = @departmentname and designationname = @designationname
+end
+
+select p.*, d.*, ds.* from person p 
+inner join department d on p.departmentid=d.departmentid
+inner join designation ds on p.designationid=ds.designationid
+where departmentname = 'Admin1'and designationname = 'Welder'
+exec sp_select_person2 'Admin1','welder'
