@@ -1,0 +1,237 @@
+use PRANJAL
+'switched to db PRANJAL'
+db.createCollection("deposite")
+{ ok: 1 }
+db.deposite.insertMany([{ACTNO:101,CNAME:"ANIL",BNAME:"VRCE",AMOUNT:1000,ADATE:new Date("1995-03-01")}])
+{ acknowledged: true,
+  insertedIds: { '0': ObjectId("6545f1318c3d1521be36f197") } }
+db.deposite.insertMany([{ACTNO:102,CNAME:"SUNIL",BNAME:"AJNI",AMOUNT:5000.00,ADATE:new Date("1996-01-04")}
+,{ACTNO:103,CNAME:"MEHUL",BNAME:"KAROLBAGH",AMOUNT:3500.00,ADATE:new Date("1995-11-17")}
+{ACTNO:104,CNAME:"MADHURI",BNAME:"CHANDI",AMOUNT:1200.00,ADATE:new Date("1995-12-17")},
+{ACTNO:105,CNAME:"PRMOD",BNAME:"M.G. ROAD",AMOUNT:3000.00,ADATE:new Date("1996-03-27")},
+{ACTNO:106,CNAME:"SANDIP",BNAME:"ANDHERI",AMOUNT:2000.00,ADATE:new Date("1996-03-31")},
+{ACTNO:107,CNAME:"SHIVANI",BNAME:"VIRAR",AMOUNT:1000.00,ADATE:new Date("1995-09-05")},
+{ACTNO:108,CNAME:"KRANTI",BNAME:"NEHRU PLACE",AMOUNT:5000.00,ADATE:new Date("1995-07-02")}])
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.deposite.insertMany(
+  [
+    {ACTNO:102,CNAME:"SUNIL",BNAME:"AJNI",AMOUNT:5000.00,ADATE:new Date("1996-01-04")},
+{ACTNO:103,CNAME:"MEHUL",BNAME:"KAROLBAGH",AMOUNT:3500.00,ADATE:new Date("1995-11-17")},
+{ACTNO:104,CNAME:"MADHURI",BNAME:"CHANDI",AMOUNT:1200.00,ADATE:new Date("1995-12-17")},
+{ACTNO:105,CNAME:"PRMOD",BNAME:"M.G. ROAD",AMOUNT:3000.00,ADATE:new Date("1996-03-27")},
+{ACTNO:106,CNAME:"SANDIP",BNAME:"ANDHERI",AMOUNT:2000.00,ADATE:new Date("1996-03-31")},
+{ACTNO:107,CNAME:"SHIVANI",BNAME:"VIRAR",AMOUNT:1000.00,ADATE:new Date("1995-09-05")},
+{ACTNO:108,CNAME:"KRANTI",BNAME:"NEHRU PLACE",AMOUNT:5000.00,ADATE:new Date("1995-07-02")}])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6545f3758c3d1521be36f198"),
+     '1': ObjectId("6545f3758c3d1521be36f199"),
+     '2': ObjectId("6545f3758c3d1521be36f19a"),
+     '3': ObjectId("6545f3758c3d1521be36f19b"),
+     '4': ObjectId("6545f3758c3d1521be36f19c"),
+     '5': ObjectId("6545f3758c3d1521be36f19d"),
+     '6': ObjectId("6545f3758c3d1521be36f19e") } }
+db.deposite.find()
+{ _id: ObjectId("6545f1318c3d1521be36f197"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f198"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f199"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19a"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19b"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19c"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19d"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19e"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+db.deposite.pretty()
+TypeError: db.deposite.pretty is not a function
+db.deposite.find().pretty()
+{ _id: ObjectId("6545f1318c3d1521be36f197"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f198"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f199"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19a"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19b"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19c"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19d"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19e"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+db.deposite.findOne()
+{ _id: ObjectId("6545f1318c3d1521be36f197"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+db.deposite.insertOne
+{ACTNO:109,CNAME:"KIRTI",BNAME:"VIRAR",AMOUNT:3000.00,ADATE:new Date("1997-05-03")})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.deposite.insertOne
+({ACTNO:109,CNAME:"KIRTI",BNAME:"VIRAR",AMOUNT:3000.00,ADATE:new Date("1997-05-03")})
+{ acknowledged: true,
+  insertedId: ObjectId("6545f5df8c3d1521be36f19f") }
+db.deposite.insertMany([
+  {ACTNO:110,CNAME:"MITALI",BNAME:"ANDHERI",AMOUNT:4500.00,ADATE:new Date("1995-09-04")},
+  {ACTNO:111,CNAME:"RAJIV",BNAME:"NEHRU PLACE",AMOUNT:7000.00,ADATE:new Date("1998-10-02")}
+  ])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6545f6d28c3d1521be36f1a0"),
+     '1': ObjectId("6545f6d28c3d1521be36f1a1") } }
+db.deposite.find()
+{ _id: ObjectId("6545f1318c3d1521be36f197"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f198"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f199"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19a"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19b"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19c"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19d"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f19e"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+{ _id: ObjectId("6545f5df8c3d1521be36f19f"),
+  ACTNO: 109,
+  CNAME: 'KIRTI',
+  BNAME: 'VIRAR',
+  AMOUNT: 3000,
+  ADATE: 1997-05-03T00:00:00.000Z }
+{ _id: ObjectId("6545f6d28c3d1521be36f1a0"),
+  ACTNO: 110,
+  CNAME: 'MITALI',
+  BNAME: 'ANDHERI',
+  AMOUNT: 4500,
+  ADATE: 1995-09-04T00:00:00.000Z }
+{ _id: ObjectId("6545f6d28c3d1521be36f1a1"),
+  ACTNO: 111,
+  CNAME: 'RAJIV',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 7000,
+  ADATE: 1998-10-02T00:00:00.000Z }
+show collections
+deposite
+db.deposite.find().limit(2)
+{ _id: ObjectId("6545f1318c3d1521be36f197"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6545f3758c3d1521be36f198"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
