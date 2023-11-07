@@ -1,5 +1,5 @@
-use PRANJAL
-'switched to db PRANJAL'
+use PARESH
+'switched to db PARESH'
 db.createCollection("deposite")
 { ok: 1 }
 db.deposite.insertMany([{ACTNO:101,CNAME:"ANIL",BNAME:"VRCE",AMOUNT:1000,ADATE:new Date("1995-03-01")}])
