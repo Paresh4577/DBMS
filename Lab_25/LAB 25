@@ -235,3 +235,282 @@ db.deposite.find().limit(2)
   BNAME: 'AJNI',
   AMOUNT: 5000,
   ADATE: 1996-01-04T00:00:00.000Z }
+
+db.deposite.find()
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c5"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c6"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c7"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c8"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c9"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697ca"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697cb"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+db.deposite.find().pretty()
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c5"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c6"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c7"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c8"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c9"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697ca"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697cb"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+db.deposite.findOne()
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+db.deposite.insertOne
+({ACTNO:109,CNAME:"KIRTI",BNAME:"VIRAR",AMOUNT:3000.00,ADATE:new Date("1997-05-03")})
+{ acknowledged: true,
+  insertedId: ObjectId("6549b305e8e0c046d946a5f0") }
+db.deposite.insertMany([
+  {ACTNO:110,CNAME:"MITALI",BNAME:"ANDHERI",AMOUNT:4500.00,ADATE:new Date("1995-09-04")},
+  {ACTNO:111,CNAME:"RAJIV",BNAME:"NEHRU PLACE",AMOUNT:7000.00,ADATE:new Date("1998-10-02")}
+  ])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6549b316e8e0c046d946a5f1"),
+     '1': ObjectId("6549b316e8e0c046d946a5f2") } }
+db.deposite.find().limit(2)
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c5"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+db.Deposite.find()
+db.Deposite.find({CNAME:1},{})
+db.Deposite.find({CNAME:1},{})
+db.Deposite.find({CNAME:1},{CNAME:1})
+db.Deposite.find().skip(2).limit(1)
+db.Deposite.find()
+db.deposite.find()
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c5"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c6"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c7"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c8"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c9"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697ca"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697cb"),
+  ACTNO: 108,
+  CNAME: 'KRANTI',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 5000,
+  ADATE: 1995-07-02T00:00:00.000Z }
+{ _id: ObjectId("6549b305e8e0c046d946a5f0"),
+  ACTNO: 109,
+  CNAME: 'KIRTI',
+  BNAME: 'VIRAR',
+  AMOUNT: 3000,
+  ADATE: 1997-05-03T00:00:00.000Z }
+{ _id: ObjectId("6549b316e8e0c046d946a5f1"),
+  ACTNO: 110,
+  CNAME: 'MITALI',
+  BNAME: 'ANDHERI',
+  AMOUNT: 4500,
+  ADATE: 1995-09-04T00:00:00.000Z }
+{ _id: ObjectId("6549b316e8e0c046d946a5f2"),
+  ACTNO: 111,
+  CNAME: 'RAJIV',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 7000,
+  ADATE: 1998-10-02T00:00:00.000Z }
+db.deposite.find().skip(2).limit(1)
+{ _id: ObjectId("6549af5c6bd1b0916eb697c6"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+db.deposite.find().skip(5).limit(2)
+{ _id: ObjectId("6549af5c6bd1b0916eb697c9"),
+  ACTNO: 106,
+  CNAME: 'SANDIP',
+  BNAME: 'ANDHERI',
+  AMOUNT: 2000,
+  ADATE: 1996-03-31T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697ca"),
+  ACTNO: 107,
+  CNAME: 'SHIVANI',
+  BNAME: 'VIRAR',
+  AMOUNT: 1000,
+  ADATE: 1995-09-05T00:00:00.000Z }
+db.deposite.insertMany([{ACTNO:112,CNAME:"MANISH",BNAME:"ANDHERI",AMOUNT:8000,ADATE:new Date("1998-05-09")}])
+{ acknowledged: true,
+  insertedIds: { '0': ObjectId("6549b65fe8e0c046d946a5f3") } }
+db.Deposite.find().skip(8).limit(1)
+db.deposite.find().skip(8).limit(1)
+{ _id: ObjectId("6549b305e8e0c046d946a5f0"),
+  ACTNO: 109,
+  CNAME: 'KIRTI',
+  BNAME: 'VIRAR',
+  AMOUNT: 3000,
+  ADATE: 1997-05-03T00:00:00.000Z }
+db.deposite.find().skip(10).limit(2)
+{ _id: ObjectId("6549b316e8e0c046d946a5f2"),
+  ACTNO: 111,
+  CNAME: 'RAJIV',
+  BNAME: 'NEHRU PLACE',
+  AMOUNT: 7000,
+  ADATE: 1998-10-02T00:00:00.000Z }
+{ _id: ObjectId("6549b65fe8e0c046d946a5f3"),
+  ACTNO: 112,
+  CNAME: 'MANISH',
+  BNAME: 'ANDHERI',
+  AMOUNT: 8000,
+  ADATE: 1998-05-09T00:00:00.000Z }
+db.deposite.find().limit(5)
+{ _id: ObjectId("6549af3d6bd1b0916eb697c4"),
+  ACTNO: 101,
+  CNAME: 'ANIL',
+  BNAME: 'VRCE',
+  AMOUNT: 1000,
+  ADATE: 1995-03-01T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c5"),
+  ACTNO: 102,
+  CNAME: 'SUNIL',
+  BNAME: 'AJNI',
+  AMOUNT: 5000,
+  ADATE: 1996-01-04T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c6"),
+  ACTNO: 103,
+  CNAME: 'MEHUL',
+  BNAME: 'KAROLBAGH',
+  AMOUNT: 3500,
+  ADATE: 1995-11-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c7"),
+  ACTNO: 104,
+  CNAME: 'MADHURI',
+  BNAME: 'CHANDI',
+  AMOUNT: 1200,
+  ADATE: 1995-12-17T00:00:00.000Z }
+{ _id: ObjectId("6549af5c6bd1b0916eb697c8"),
+  ACTNO: 105,
+  CNAME: 'PRMOD',
+  BNAME: 'M.G. ROAD',
+  AMOUNT: 3000,
+  ADATE: 1996-03-27T00:00:00.000Z }
